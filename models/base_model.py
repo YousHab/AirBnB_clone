@@ -5,7 +5,9 @@ import models
 from uuid import uuid4
 from datetime import datetime
 
+
 class BaseModel:
+
     """Base class for all models."""
     def __init__(self, *args, **kwargs):
         """Initialize the BaseModel class.
@@ -25,8 +27,4 @@ class BaseModel:
                     self.__dict__[key] = value
 
         else:
-            
-
-
-
-
+            pass
