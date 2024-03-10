@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 """Defines the BaseModel class."""
 
-import models
 from uuid import uuid4
 from datetime import datetime
 
@@ -33,9 +32,8 @@ class BaseModel:
         """
             Return a string representation of the BaseModel class.
         """
-
-        return "[{}] ({}) {}".
-        format(self.__class__.__name__, self.id, self.__dict__)
+        class_name = self.__class__.__name__
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
 
     def save(self):
         """
