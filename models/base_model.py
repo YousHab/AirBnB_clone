@@ -28,13 +28,6 @@ class BaseModel:
                 else:
                     self.__dict__[key] = value
 
-    def __str__(self):
-        """
-            Return a string representation of the BaseModel class.
-        """
-        class_name = self.__class__.__name__
-        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
-
     def save(self):
         """
             Updates the public instance attribute updated_at
@@ -47,4 +40,15 @@ class BaseModel:
             Returns a dictionary containing all keys/values
             of __dict__ of the instance.
         """
-        return self.__dict__
+
+        dict_copy = self.__dict__.copy()
+        dict_copy["created_at"] = self.created_at.isoformat()
+        dict_copy["updated_at"] = self.updated_at.isoformat()
+        dict_cop["__class__"] = self.__class__.__name__
+
+    def __str__(self):
+        """
+            Return a string representation of the BaseModel class.
+        """
+        class_name = self.__class__.__name__
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
