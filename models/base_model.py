@@ -46,6 +46,8 @@ class BaseModel:
         dict_copy["updated_at"] = self.updated_at.isoformat()
         dict_cop["__class__"] = self.__class__.__name__
 
+        return dict_copy
+
     def __str__(self):
         """
             Return a string representation of the BaseModel class.
