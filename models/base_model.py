@@ -10,11 +10,14 @@ class BaseModel:
 
     """Base class for all models."""
     def __init__(self, *args, **kwargs):
-        """Initialize the BaseModel class.
+
+        """
+        Initialize the BaseModel class.
         Args:
             *args: unused arguments.
             **kwargs: key/value dictionary
         """
+
         tform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
         self.created_at = datetime.today()
@@ -26,5 +29,24 @@ class BaseModel:
                 else:
                     self.__dict__[key] = value
 
-        else:
-            pass
+    def __str__(self):
+        """
+            Return a string representation of the BaseModel class.
+        """
+
+        return "[{}] ({}) {}".
+        format(self.__class__.__name__, self.id, self.__dict__)
+
+    def save(self):
+        """
+            Updates the public instance attribute updated_at
+            with the current datetime.
+        """
+        self.updated_at = datetime.today()
+
+    def to_dic(self):
+        """
+            Returns a dictionary containing all keys/values
+            of __dict__ of the instance.
+        """
+        return self.__dict__
